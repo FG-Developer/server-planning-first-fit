@@ -1,0 +1,31 @@
+{
+    "name": "server-planning/first-fit",
+    "description": "Calculate server needs for virtual machine.",
+    "keywords": ["server planning first-fit firstfit first fit"],
+    "homepage": "https://github.com/FG-Developer/server-planning-first-fit",
+    "type": "project",
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ilyas Demirtas",
+            "email": "ilyasdemirtas@hotmail.com.tr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "SP\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}

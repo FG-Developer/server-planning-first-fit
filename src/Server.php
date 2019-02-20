@@ -107,10 +107,11 @@ class Server
     {
         return $this->vms;
     }
-
+    
     /**
-     * @param VM $item
+     * @param VM $vm
      * @return $this
+     * @internal param VM $item
      */
     public function addItem(VM $vm)
     {

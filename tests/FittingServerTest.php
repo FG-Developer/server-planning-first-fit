@@ -35,5 +35,18 @@ class FittingServerTest extends TestCase
         $calculate = new FittingServer();
         $calculate->calculate($serverDetails, [$vm1, $vm2]);
     }
+    
+    public function testCalculateInt()
+    {
+        $serverDetails = new ServerDetails(12, 64, 500);
+    
+        $vm1 = new VM(6, 32, 250);
+        $vm2 = new VM(6, 32, 250);
+    
+        $calculate = new FittingServer();
+        $server_count = $calculate->calculate($serverDetails, [$vm1, $vm2]);
+        
+        $this->assertIsInt($server_count);
+    }
 
 }

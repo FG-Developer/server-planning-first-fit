@@ -60,12 +60,10 @@ class VM
     {
         return $this->hdd;
     }
-
+    
     /**
-     * All hardware volume.
-     * This method use only for sorting.
-     *
-     * @return [type] [description]
+     * All hardware volume. This method use only for sorting.
+     * @return int
      */
     public function getVolume(){
         return $this->cpu + $this->ram + $this->hdd;

@@ -3,14 +3,14 @@
 namespace SP;
 
 /**
- * Class FittinServer
+ * Class FittingServer
  *
  * @author Ilyas Demirtas <ilyasdemirtas@hotmail.com.tr>
  */
 class FittingServer
 {
     /**
-     * Get created Server Count
+     * Get created server count
      *
      * @param ServerDetails $serverDetails
      * @param array $vms
@@ -25,7 +25,7 @@ class FittingServer
 
     /**
      * According to the VMs created, the server that is needed is created.
-     * IF Server volume is full, createing new server.
+     * If server volume is full, creates new server.
      *
      * @param ServerDetails $serverDetails
      * @param array         $vms
@@ -44,7 +44,7 @@ class FittingServer
             }
 
             foreach ($servers as $server) {
-                if ($this->checkServerVolumes($vm, $server)) {
+                if ($this->checkServerVolume($vm, $server)) {
                     $server->addItem($vm);
                     continue 2;
                 } else if ($server->isEmpty()) {
@@ -54,7 +54,7 @@ class FittingServer
 
             $newServer = new Server($serverDetails);
 
-            if ($this->checkServerVolumes($vm, $newServer)) {
+            if ($this->checkServerVolume($vm, $newServer)) {
                 $newServer->addItem($vm);
                 $servers[] = $newServer;
             } else {
@@ -65,16 +65,15 @@ class FittingServer
 
         return $servers;
     }
-
+    
     /**
-     * Checks generated servers volumes
+     * Checks generated server volume
      *
-     * @param  VM     $vm
+     * @param  VM $vm
      * @param  Server $server
-     *
-     * @return bool
+     * @return int
      */
-    public function checkServerVolumes(VM $vm, Server $server)
+    private function checkServerVolume(VM $vm, Server $server): int
     {
         $this->checkVMSize($vm, $server);
 
@@ -92,16 +91,15 @@ class FittingServer
 
         return true;
     }
-
+    
     /**
-     * Check Generated VM hardware size.
-     * if generate vm has any hardware size greater than main server hardware size,
-     * throws an exception.
+     * Check generated VM hardware size.
+     * if generate vm has any hardware size greater than main server hardware size, throws an exception.
      *
-     * @param  VM     $vm
+     * @param  VM $vm
      * @param  Server $server
-     *
-     * @return Exception|bool
+     * @return bool|Exception
+     * @throws \Exception
      */
     private function checkVMSize(VM $vm, Server $server){
 
